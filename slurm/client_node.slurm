@@ -39,8 +39,9 @@ done < ./server_info
 
 
 sleep 10
+python3 worker_diagnostics.py --role client &
 time -p srun -l -n ${SLURM_NTASKS} -N ${SLURM_NNODES} -c ${SLURM_CPUS_PER_TASK} \
-llama-cli -m  /scratch/feic/pjs/DeepSeek-CPU-Inference/models/DeepSeek-R1-UD-IQ1_S.gguf \
+llama-cli -m  /scratch/feic/pjs/DeepSeek-CPU-Inference/models/DeepSeek-R1.Q8_0.gguf \
 -p "The weather was so perfect that I did not want to go back in the house. But I had left a new beef stew on the stove which needed my attention. Please generate in English what happend next " \
 --repeat-penalty 1.0 -n 128 \
---rpc ${server_list} -t 192  -no-cnv -ngl 99 
+--rpc ${server_list} -t 192  -no-cnv -ngl 99

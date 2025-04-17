@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=rpc_client
+#SBATCH --job-name=benchmark
 #SBATCH --output=%x-%j.out
 #SBATCH --error=%x-%j.err
 #SBATCH --partition=workq
@@ -40,4 +40,4 @@ done < ./server_info
 
 sleep 10
 time -p srun -l -n ${SLURM_NTASKS} -N ${SLURM_NNODES} -c ${SLURM_CPUS_PER_TASK} \
-llama-bench -m  /scratch/feic/pjs/DeepSeek-CPU-Inference/models/DeepSeek-R1-GGUF/DeepSeek-R1-Q8_0/DeepSeek-R1.Q8_0-00001-of-00015.gguf -t 32,64,128,256
+llama-bench -m  /scratch/feic/pjs/DeepSeek-CPU-Inference/models/DeepSeek-R1-UD-IQ1_S.gguf -t 196,392
