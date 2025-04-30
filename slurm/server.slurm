@@ -7,7 +7,7 @@
 #SBATCH --tasks-per-node=1
 #SBATCH --cpus-per-task=192
 #SBATCH --hint=nomultithread
-#SBATCH --time=1:30:00
+#SBATCH --time=10:30:00
 
 source activate download_r1
 BASEDIR=/scratch/feic/pjs/DeepSeek-CPU-Inference/slurm
